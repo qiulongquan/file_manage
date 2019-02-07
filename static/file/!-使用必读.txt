@@ -1,0 +1,22 @@
+
+    FastStone Capture 8.7 汉化绿色便携版 - 极品屏幕截图工具
+————————————————
+
+    更新时间：2018/1/9
+
+    官方提供的便携版，直接运行 FSCapture.exe 即可，所有配置保存到 fsc.db 文件中。
+    
+        FSCapture.exe/FSCrossHair.exe/FSFocus.exe/FSRecorder.exe 为汉化版
+    
+        FSCapture_en.exe/FSCrossHair_en.exe/FSFocus_en.exe/FSRecorder_en.exe 为英文原版文件，如发现汉化版有问题请自行替换。
+    
+    汉化作者：飞扬时空
+    汉化版发布地址：http://blog.sina.com.cn/flyonzone
+    
+    FastStone Capture 是一款极好用的图像浏览、编辑和截屏工具，支持 BMP、JPEG、JPEG、GIF、PNG、PCX、TIFF、WMF、ICO 和 TGA 在内的所有主流图片格式，其独有的光滑和毛刺处理技术让图片更加清晰，提供缩放、旋转、减切、颜色调整功能。
+    
+    软件详细介绍：https://www.portablesoft.org/faststone-capture/
+    
+————————————————
+    黯然过客为您绿化、请访问我的博客：https://www.portablesoft.org/
+    绿化有问题？有想要绿化的软件？请联系我：admin@portablesoft.org
