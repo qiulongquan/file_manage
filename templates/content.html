@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
+     <P>详细内容页面</P>
     {% for i in content %}
                     <div class="file-content">
                     <div class="file-name" style="width:25%;">{{ i.name }}
-		<a href ="{% url "detail" i.code %}">{{ i.name }}</a>
+		<a href ="{% url "detail" i.code %}">文件详情</a>
 		</div>
                     <div class="file-size" style="width:10%;">{{ i.Filesize }}B</div>
 					<div class="file-date" style="width:10%;">{{ i.DownloadDocount }}</div>

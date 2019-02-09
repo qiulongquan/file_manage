@@ -1,10 +1,13 @@
 from django.shortcuts import render
 from django.views.generic import View
 from .models import Upload
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from django.http import HttpResponsePermanentRedirect,HttpResponse
 import random
 import string
 import json
+import os
 import datetime
 
 
@@ -34,6 +37,7 @@ class HomeView(View):
             print("u values="+str(type(u)))
             print("timezone.now="+str(timezone.now()))
             u.save()
+            # 重新调用了一次urls分发器  views可以调用html模板也可以调用urls分发器
             return HttpResponsePermanentRedirect("/s/"+code+"/")
 
 
@@ -90,12 +94,27 @@ class SearchView(View):
 class delete_file(View):
     def get(self, request,code):
         print("code="+str(code))
+        u = Upload.objects.filter(code=str(code))
+        file_path=""
+        if u:
+            file_path=u[0].path
+        print("file_path=" + str(file_path))
+        self.delete_file(file_path,code)
         IP = request.META['REMOTE_ADDR']
         u = Upload.objects.filter(PCIP=str(IP))
-        for i in u:
-            i.DownloadDocount += 1
-            i.save()
-        return render(request, 'content.html', {"content": u})
+        return HttpResponseRedirect(reverse('MY'))
+        # return render(request, 'content.html', {"content": u})
+
+    def delete_file(self,file_path,code):
+        if os.path.exists(file_path):
+            # 删除文件，可使用以下两种方法。
+            os.remove(file_path)
+            print("%s delete completed" % file_path)
+            Upload.objects.filter(code=str(code)).delete()
+            # os.unlink(my_file)
+        else:
+            print('no such file:%s' % file_path)
+
 
 
 # Create your views here.
