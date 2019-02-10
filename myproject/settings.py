@@ -25,7 +25,7 @@ SECRET_KEY = 'mx4zju)=p$o_#*ti1#%obb2jty1^c6scwe1y15_=t+_!o4*+*0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['eb-FileManage-dev.ap-northeast-1.elasticbeanstalk.com']
 
 
 # Application definition
