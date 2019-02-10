@@ -1,6 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
     <P>确认删除页面</P>
+<script type="text/javascript">
+function show_confirm()
+{
+var r=confirm("确认是否要删除文件!");
+if (r==true)
+  {
+  alert("执行文件删除操作!");
+  return true;
+  }
+else
+  {
+  alert("取消删除操作!");
+  return false;
+  }
+}
+</script>
     {% for i in content %}
                     <div class="file-content">
                     <div class="file-name" style="width:25%;">{{ i.name }}</div>
@@ -12,7 +28,7 @@
                             http://127.0.0.1:9000/s/{{ i.code}}
                         </span>
                     </div>
-                    <a href="{% url "delete_file" i.code %}" style="color:#FFF;"><button>Delete File</button></a>
+                    <a href="{% url "delete_file" i.code %}" onclick="return show_confirm()" style="color:#FFF;"><button>Delete File</button></a>
                 </div>
     {% endfor %}
 {% endblock %}

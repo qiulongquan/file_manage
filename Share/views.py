@@ -21,22 +21,29 @@ class HomeView(View):
         if request.FILES:
             file = request.FILES.get("file")
             name = file.name
-            size = int(file.size)
-            with open('static/file/'+name,'wb')as f :
-                f.write(file.read())
-            code = ''.join(random.sample(string.digits, 8))
-            from django.utils import timezone
-            u = Upload(
-                path = 'static/file/'+name,
-                name=name,
-                Filesize=size,
-                code = code,
-                PCIP=str(request.META['REMOTE_ADDR']),
-                Datatime=timezone.now(),
-            )
-            print("u values="+str(type(u)))
-            print("timezone.now="+str(timezone.now()))
-            u.save()
+            path='static/file/'+name
+            if os.path.exists(path):
+                print(str(path)+"  exists.")
+                file_exists_code='1234'
+                return HttpResponsePermanentRedirect("/my/" + file_exists_code + "/")
+            else:
+                print(str(path)+"  no exists.")
+                size = int(file.size)
+                with open('static/file/'+name,'wb')as f :
+                    f.write(file.read())
+                code = ''.join(random.sample(string.digits, 8))
+                from django.utils import timezone
+                u = Upload(
+                    path = 'static/file/'+name,
+                    name=name,
+                    Filesize=size,
+                    code = code,
+                    PCIP=str(request.META['REMOTE_ADDR']),
+                    Datatime=timezone.now(),
+                )
+                print("u values="+str(type(u)))
+                print("timezone.now="+str(timezone.now()))
+                u.save()
             # 重新调用了一次urls分发器  views可以调用html模板也可以调用urls分发器
             return HttpResponsePermanentRedirect("/s/"+code+"/")
 
@@ -70,11 +77,20 @@ class MyView(View):
         return render(request,'content.html',{"content":u})
 
 
+class Re_MyView(View):
+    def get(self,request,code):
+        IP = request.META['REMOTE_ADDR']
+        u = Upload.objects.filter(PCIP=str(IP))
+        return render(request,'content.html',{"content":u,"exists":'true'})
+
+
 class SearchView(View):
     def get(self,request):
-        code = request.GET.get("kw")
-        print("code="+str(code))
-        u = Upload.objects.filter(name=str(code))
+        search_filename = request.GET.get("kw")
+        print("search_filename="+str(search_filename))
+        # 多个字段模糊查询， 括号中的下划线是双下划线，双下划线前是字段名，双下划线后可以是icontains或contains, 区别是是否大小写敏感，竖线是或的意思
+        # icontains不区分大小写 contains区分大小写
+        u = Upload.objects.filter(name__icontains=str(search_filename))
         print("len(u)"+str(len(u)))
         data = {}
         if u :

@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
 from django.conf.urls import include, url
-from Share.views import HomeView,delete_file,DisplayView,DisplayView_detail,SearchView,MyView
+from Share.views import HomeView,Re_MyView,delete_file,DisplayView,DisplayView_detail,SearchView,MyView
 """
 app_name="Share";
 """
@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^s/(?P<code>\d+)/$',DisplayView.as_view(),name="detail_code"),
     url(r'^search/',SearchView.as_view(),name="search"),
     url(r'^my/$',MyView.as_view(),name="MY"),
+    url(r'^my/(?P<code>\d+)/$',Re_MyView.as_view(),name="Re_MyView"),
     url(r'^delete_file/(?P<code>\d+)/$',delete_file.as_view(),name="delete_file")
 
 ]

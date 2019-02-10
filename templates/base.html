@@ -1,5 +1,4 @@
-﻿
-<!doctype html>
+﻿<!doctype html>
 <html>
     <head>
         <meta content="text/html; charset=utf-8">
@@ -17,7 +16,7 @@
         <!-- Fonts -->
         <link rel="stylesheet" href="https://at.alicdn.com/t/font_xtmtjsdjlmc84cxr.css">
         <link rel="stylesheet" href="https://at.alicdn.com/t/font_k8psy17rqdoyldi.css">
-</head>
+    </head>
 <body>
 
     <div class="popup-window">
@@ -75,7 +74,8 @@
                 <!-- search file -->
                 <form id="search" action="{% url "search" %}" method="get">
                     <div class="input-box">
-                        <input id="files-info" name="kw" type="text" onkeydown="if(event.keyCode==13){return false;}" autocomplete="off" placeholder="Search File" />
+                        <input id="files-info" name="kw" type="text" onkeydown="if(event.keyCode==13)
+                        {var textvalue=document.getElementById('files-info').value;alert('查询的内容:'+textvalue+'\n');return false;}" autocomplete="off" placeholder="Search File" />
                         <span class="iconfont search-text-icon">&#xe714;</span>
                     </div>
                 </form><!-- END search file -->
