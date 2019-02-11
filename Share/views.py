@@ -119,7 +119,7 @@ class delete_file(View):
         u = Upload.objects.filter(code=str(code))
         file_path=""
         if u:
-            file_path=u[0].path
+            file_path=(u[0].path).encode('utf8')
         print("file_path=" + str(file_path))
         self.delete_file(file_path,code)
         IP = request.META['REMOTE_ADDR']
