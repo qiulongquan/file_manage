@@ -30,7 +30,8 @@ class HomeView(View):
             else:
                 print(str(path)+"  no exists.")
                 size = int(file.size)
-                with open('static/file/'+name,'wb')as f :
+                with open(path.encode('utf-8'), 'wb')as f:
+                # with open('static/file/'+name,'wb')as f :
                     f.write(file.read())
                 code = ''.join(random.sample(string.digits, 8))
                 from django.utils import timezone
