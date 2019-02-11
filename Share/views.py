@@ -70,7 +70,10 @@ class DisplayView_detail(View):
 class MyView(View):
     def get(self,request):
         IP = request.META['REMOTE_ADDR']
-        u = Upload.objects.filter(PCIP=str(IP))
+        print("your ip address is " + str(IP))
+        # 每次检索都显示所有的记录 不在根据ip地址划分
+        u = Upload.objects.all()
+        # u = Upload.objects.filter(PCIP=str(IP))
         for i in u :
             i.DownloadDocount +=1
             i.save()
@@ -80,7 +83,10 @@ class MyView(View):
 class Re_MyView(View):
     def get(self,request,code):
         IP = request.META['REMOTE_ADDR']
-        u = Upload.objects.filter(PCIP=str(IP))
+        print("your ip address is " + str(IP))
+        # 每次检索都显示所有的记录 不在根据ip地址划分
+        u = Upload.objects.all()
+        # u = Upload.objects.filter(PCIP=str(IP))
         return render(request,'content.html',{"content":u,"exists":'true'})
 
 
@@ -117,7 +123,8 @@ class delete_file(View):
         print("file_path=" + str(file_path))
         self.delete_file(file_path,code)
         IP = request.META['REMOTE_ADDR']
-        u = Upload.objects.filter(PCIP=str(IP))
+        print("your ip address is " + str(IP))
+        # u = Upload.objects.filter(PCIP=str(IP))
         return HttpResponseRedirect(reverse('MY'))
         # return render(request, 'content.html', {"content": u})
 
