@@ -20,8 +20,8 @@ class HomeView(View):
         print("post request come")
         if request.FILES:
             file = request.FILES.get("file")
-            name = file.name.encode('utf8')
-            path='static/file/'+str(name)
+            name = str(file.name.encode('utf8'))
+            path='static/file/'+name
             if os.path.exists(path):
                 print(str(path)+"  exists.")
                 file_exists_code='1234'
