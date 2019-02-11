@@ -78,17 +78,29 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 
-DATABASES = {
-    'default': {
-        'ENGINE':'django.db.backends.mysql',
-        'NAME':'ebdb',
-        # 'NAME':os.environ['RDS_DB_NAME'],
-        'USER':'qiulongquan',
-        'PASSWORD':'123456abcABC',
-        'HOST':'aa15zybgfzpb0bz.cqnfpkbdck9a.ap-northeast-1.rds.amazonaws.com',
-        'PORT':'3306',
+if 'RDS_HOSTNAME' in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE':'django.db.backends.mysql',
+            'NAME':os.environ['RDS_DB_NAME'],
+            'USER':os.environ['RDS_USERNAME'],
+            'PASSWORD':os.environ['RDS_PASSWORD'],
+            'HOST':os.environ['RDS_HOSTNAME'],
+            'PORT':os.environ['RDS_PORT'],
         }
     }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE':'django.db.backends.mysql',
+#         'NAME':'ebdb',
+#         'USER':'qiulongquan',
+#         'PASSWORD':'123456abcABC',
+#         'HOST':'aa15zybgfzpb0bz.cqnfpkbdck9a.ap-northeast-1.rds.amazonaws.com',
+#         'PORT':'3306',
+#         }
+#     }
 
 # DATABASES = {
 #     'default': {
