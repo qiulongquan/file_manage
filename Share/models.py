@@ -14,9 +14,9 @@ class Upload(models.Model):
     bikou = models.CharField(max_length=100,verbose_name=u"文件description")
 
     class Meta():
-        verbose_name="download1"
+        verbose_name="download"
         verbose_name_plural = verbose_name
-        db_table = "download1"
+        db_table = "download"
 
     def __str__(self):
         return self.name
