@@ -25,7 +25,7 @@ SECRET_KEY = 'mx4zju)=p$o_#*ti1#%obb2jty1^c6scwe1y15_=t+_!o4*+*0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['eb-FileManage-dev.ap-northeast-1.elasticbeanstalk.com']
 
 
 # Application definition
@@ -77,24 +77,24 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-# if 'RDS_HOSTNAME' in os.environ:
-#     DATABASES = {
-#         'default': {
-#             'ENGINE':'django.db.backends.mysql',
-#             'NAME':os.environ['RDS_DB_NAME'],
-#             'USER':os.environ['RDS_USERNAME'],
-#             'PASSWORD':os.environ['RDS_PASSWORD'],
-#             'HOST':os.environ['RDS_HOSTNAME'],
-#             'PORT':os.environ['RDS_PORT'],
-#         }
-#     }
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if 'RDS_HOSTNAME' in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE':'django.db.backends.mysql',
+            'NAME':os.environ['RDS_DB_NAME'],
+            'USER':os.environ['RDS_USERNAME'],
+            'PASSWORD':os.environ['RDS_PASSWORD'],
+            'HOST':os.environ['RDS_HOSTNAME'],
+            'PORT':os.environ['RDS_PORT'],
+        }
     }
-}
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
