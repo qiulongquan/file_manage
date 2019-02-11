@@ -1,3 +1,4 @@
+# coding=gbk
 from django.shortcuts import render
 from django.views.generic import View
 from .models import Upload
@@ -20,7 +21,7 @@ class HomeView(View):
         print("post request come")
         if request.FILES:
             file = request.FILES.get("file")
-            name = str(file.name.encode('utf8'))
+            name = file.name
             path='static/file/'+name
             if os.path.exists(path):
                 print(str(path)+"  exists.")
@@ -44,7 +45,7 @@ class HomeView(View):
                 print("u values="+str(type(u)))
                 print("timezone.now="+str(timezone.now()))
                 u.save()
-            # é‡æ–°è°ƒç”¨äº†ä¸€æ¬¡urlsåˆ†å‘å™¨  viewså¯ä»¥è°ƒç”¨htmlæ¨¡æ¿ä¹Ÿå¯ä»¥è°ƒç”¨urlsåˆ†å‘å™¨
+            # ÖØĞÂµ÷ÓÃÁËÒ»´Îurls·Ö·¢Æ÷  views¿ÉÒÔµ÷ÓÃhtmlÄ£°åÒ²¿ÉÒÔµ÷ÓÃurls·Ö·¢Æ÷
             return HttpResponsePermanentRedirect("/s/"+code+"/")
 
 
@@ -71,7 +72,7 @@ class MyView(View):
     def get(self,request):
         IP = request.META['REMOTE_ADDR']
         print("your ip address is " + str(IP))
-        # æ¯æ¬¡æ£€ç´¢éƒ½æ˜¾ç¤ºæ‰€æœ‰çš„è®°å½• ä¸åœ¨æ ¹æ®ipåœ°å€åˆ’åˆ†
+        # Ã¿´Î¼ìË÷¶¼ÏÔÊ¾ËùÓĞµÄ¼ÇÂ¼ ²»ÔÚ¸ù¾İipµØÖ·»®·Ö
         u = Upload.objects.all()
         # u = Upload.objects.filter(PCIP=str(IP))
         for i in u :
@@ -84,7 +85,7 @@ class Re_MyView(View):
     def get(self,request,code):
         IP = request.META['REMOTE_ADDR']
         print("your ip address is " + str(IP))
-        # æ¯æ¬¡æ£€ç´¢éƒ½æ˜¾ç¤ºæ‰€æœ‰çš„è®°å½• ä¸åœ¨æ ¹æ®ipåœ°å€åˆ’åˆ†
+        # Ã¿´Î¼ìË÷¶¼ÏÔÊ¾ËùÓĞµÄ¼ÇÂ¼ ²»ÔÚ¸ù¾İipµØÖ·»®·Ö
         u = Upload.objects.all()
         # u = Upload.objects.filter(PCIP=str(IP))
         return render(request,'content.html',{"content":u,"exists":'true'})
@@ -94,8 +95,8 @@ class SearchView(View):
     def get(self,request):
         search_filename = request.GET.get("kw")
         print("search_filename="+str(search_filename))
-        # å¤šä¸ªå­—æ®µæ¨¡ç³ŠæŸ¥è¯¢ï¼Œ æ‹¬å·ä¸­çš„ä¸‹åˆ’çº¿æ˜¯åŒä¸‹åˆ’çº¿ï¼ŒåŒä¸‹åˆ’çº¿å‰æ˜¯å­—æ®µåï¼ŒåŒä¸‹åˆ’çº¿åå¯ä»¥æ˜¯icontainsæˆ–contains, åŒºåˆ«æ˜¯æ˜¯å¦å¤§å°å†™æ•æ„Ÿï¼Œç«–çº¿æ˜¯æˆ–çš„æ„æ€
-        # icontainsä¸åŒºåˆ†å¤§å°å†™ containsåŒºåˆ†å¤§å°å†™
+        # ¶à¸ö×Ö¶ÎÄ£ºı²éÑ¯£¬ À¨ºÅÖĞµÄÏÂ»®ÏßÊÇË«ÏÂ»®Ïß£¬Ë«ÏÂ»®ÏßÇ°ÊÇ×Ö¶ÎÃû£¬Ë«ÏÂ»®Ïßºó¿ÉÒÔÊÇicontains»òcontains, Çø±ğÊÇÊÇ·ñ´óĞ¡Ğ´Ãô¸Ğ£¬ÊúÏßÊÇ»òµÄÒâË¼
+        # icontains²»Çø·Ö´óĞ¡Ğ´ containsÇø·Ö´óĞ¡Ğ´
         u = Upload.objects.filter(name__icontains=str(search_filename))
         print("len(u)"+str(len(u)))
         data = {}
@@ -130,7 +131,7 @@ class delete_file(View):
 
     def delete_file(self,file_path,code):
         if os.path.exists(file_path):
-            # åˆ é™¤æ–‡ä»¶ï¼Œå¯ä½¿ç”¨ä»¥ä¸‹ä¸¤ç§æ–¹æ³•ã€‚
+            # É¾³ıÎÄ¼ş£¬¿ÉÊ¹ÓÃÒÔÏÂÁ½ÖÖ·½·¨¡£
             os.remove(file_path)
             print("%s delete completed" % file_path)
             Upload.objects.filter(code=str(code)).delete()
