@@ -21,10 +21,10 @@ class HomeView(View):
         print("post request come")
         if request.FILES:
             file = request.FILES.get("file")
-            name = (file.name).encode='utf-8'
+            name = file.name
             path='static/file/'+name
-            if os.path.exists(path):
-                print(str(path)+"  exists.")
+            if os.path.exists(path.encode('utf-8')):
+                print(str(path.encode('utf-8'))+"  exists.")
                 file_exists_code='1234'
                 return HttpResponsePermanentRedirect("/my/" + file_exists_code + "/")
             else:
