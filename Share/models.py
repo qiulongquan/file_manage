@@ -7,11 +7,11 @@ class Upload(models.Model):
     code = models.CharField(max_length=10,verbose_name=u"code")
     Datatime=models.DateTimeField('date published')
     # Datatime = models.DateTimeField(default=datetime.now)
-    path = models.CharField(max_length=32,verbose_name=u"下载路径")
+    path = models.CharField(max_length=200,verbose_name=u"下载路径")
     name = models.CharField(max_length=32,verbose_name=u"文件名",default="")
-    Filesize = models.CharField(max_length=10,verbose_name=u"文件大小")
+    Filesize = models.CharField(max_length=18,verbose_name=u"文件大小")
     PCIP = models.CharField(max_length=32,verbose_name=u"IP地址",default="")
-    bikou = models.CharField(max_length=100,verbose_name=u"文件description")
+    bikou = models.CharField(max_length=200,verbose_name=u"文件description")
 
 class Meta():
     verbose_name="download"

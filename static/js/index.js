@@ -47,10 +47,10 @@ function handleFileSelect(e){
             console.log('=======size-ok:'+parseInt(output[2]))
             console.log($('#files').val())
 	    $("#form").submit();
-            showOverlay('ok');
+            showOverlay('文件上传成功！');
             break
         }
-	showOverlay('ok1');
+	
         $('#files').val("");
         files = null; output = [];
     }
