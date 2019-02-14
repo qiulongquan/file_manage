@@ -25,7 +25,7 @@ function handleFileSelect(e){
 
     var files = e.target.files;
     var output = [];
-    var maxSize = 5;
+    var maxSize = 100;
     var xhr = new XMLHttpRequest();
     
 	
