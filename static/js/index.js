@@ -205,8 +205,8 @@ function showOverlay(info, buttt) {
 /* ------------------------------------------------------------------ */
 $('.search-text-icon').click(function() {
    
-    if( !$("#files-info").val() || $("#files-info").val().length < 4 ) {
-        $("#files-info").focus().val("").attr("placeholder","搜索内容不能为空或长度小于4个字符");
+    if( !$("#files-info").val() || $("#files-info").val().length < 6 ) {
+        $("#files-info").focus().val("").attr("placeholder","搜索内容不能为空或长度小于6个字符");
 	
     } else {
 
@@ -241,7 +241,7 @@ $('.search-text-icon').click(function() {
                     '<div class="file-date" style="width:20%;">'+data[i].time+'</div>' +
                     '<div class="file-link" style="width:35%; padding-right: 80px; text-overflow: ellipsis; overflow: hidden;">' +
                         '<span>' +
-                            'http://10.204.48.213:9999/s/'+data[i].key+
+                            'http://10.204.48.213/s/'+data[i].key+
                         '</span>' +
                     '</div>' +
                     '<button><a href="/s/'+data[i].key+'">Download</a></button>' +
