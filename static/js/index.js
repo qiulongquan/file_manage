@@ -45,11 +45,12 @@ function handleFileSelect(e){
 			
         } else {
             console.log('=======size-ok:'+parseInt(output[2]))
-                 console.log($('#files').val())
-	       	$("#form").submit();
-
+            console.log($('#files').val())
+	    $("#form").submit();
+            showOverlay('ok');
             break
         }
+	showOverlay('ok1');
         $('#files').val("");
         files = null; output = [];
     }
@@ -205,8 +206,8 @@ function showOverlay(info, buttt) {
 /* ------------------------------------------------------------------ */
 $('.search-text-icon').click(function() {
    
-    if( !$("#files-info").val() || $("#files-info").val().length < 6 ) {
-        $("#files-info").focus().val("").attr("placeholder","搜索内容不能为空或长度小于6个字符");
+    if( !$("#files-info").val() || $("#files-info").val().length < 4 ) {
+        $("#files-info").focus().val("").attr("placeholder","搜索内容不能为空或长度小于4个字符");
 	
     } else {
 
