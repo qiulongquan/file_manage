@@ -47,7 +47,7 @@ function handleFileSelect(e){
             console.log('=======size-ok:'+parseInt(output[2]))
             console.log($('#files').val())
 	    $("#form").submit();
-            showOverlay('文件正在上传... ...'+ \n +'请等待完成。对话框会自动刷新！');
+            showOverlay('文件正在上传... ...请等待完成。对话框会自动刷新！');
             break
         }
 	
