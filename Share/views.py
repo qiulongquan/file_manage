@@ -114,7 +114,7 @@ class SearchView(View):
                 data[i]['ip'] = str(u[i].PCIP)
                 data[i]['size'] = u[i].Filesize
                 # data[i]['time'] = str(u[i].Datatime.strftime('%Y-%m-%d %H:%M:%S'))
-                data[i]['time'] = u[i].Datatime
+                data[i]['time'] = str(u[i].Datatime)
                 data[i]['key'] = u[i].code
         return HttpResponse(json.dumps(data),content_type="application/json")
 
