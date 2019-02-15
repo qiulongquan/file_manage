@@ -245,7 +245,7 @@ $('.search-text-icon').click(function() {
                             'http://'+data[i].ip+'/s/'+data[i].key+
                         '</span>' +
                     '</div>' +
-                    '<button><a href="/s/'+data[i].key+'">Download</a></button>' +
+                    '<button><a href="/static/file/'+data[i].filename+'">Download</a></button>' +
                 '</div>'
 		$('.show-file').append( html ).show();
 
