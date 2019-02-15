@@ -114,7 +114,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Japan'
+TIME_ZONE = 'Asia/Tokyo'
 
 USE_I18N = True
 

@@ -242,7 +242,7 @@ $('.search-text-icon').click(function() {
                     '<div class="file-date" style="width:20%;">'+data[i].time+'</div>' +
                     '<div class="file-link" style="width:35%; padding-right: 80px; text-overflow: ellipsis; overflow: hidden;">' +
                         '<span>' +
-                            'http://10.204.48.213/s/'+data[i].key+
+                            'http://'+data[i].ip+'/s/'+data[i].key+
                         '</span>' +
                     '</div>' +
                     '<button><a href="/s/'+data[i].key+'">Download</a></button>' +
