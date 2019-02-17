@@ -1,4 +1,4 @@
-﻿这个是一个python平台
+这个是一个python平台
 采用django框架的项目
 
 
