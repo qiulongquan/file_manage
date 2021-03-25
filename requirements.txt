@@ -26,7 +26,7 @@ pathspec==0.5.5
 PyMySQL==0.9.3
 python-dateutil==2.7.5
 pytz==2018.9
-PyYAML==3.13
+PyYAML==5.4
 requests==2.20.1
 semantic-version==2.5.0
 six==1.11.0
